@@ -1,0 +1,85 @@
+ext {
+    //AndroidX Core
+    androidXCoreVer = '1.2.0'
+    coreDependencies = [
+            androidXCore: "androidx.core:core-ktx:${androidXCoreVer}"
+    ]
+
+    // Kotlin Gradle
+    buildGradleVer = '4.1.1'
+    kotlinVer = '1.3.72'
+    pluginDependencies = [
+            buildGradle       : "com.android.tools.build:gradle:${buildGradleVer}",
+            kotlinGradlePlugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVer}",
+            kotlinStdlib      : "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVer}"
+    ]
+
+    //Support Libraries
+    appCompatVer = '1.2.0'
+    supportDependencies = [
+            appCompat: "androidx.appcompat:appcompat:${appCompatVer}"
+    ]
+
+    //UI
+    materialDesignVer = '1.3.0'
+    cardviewVer = '1.0.0'
+    recyclerViewVer = '1.1.0'
+    constraingLayoutVer = '2.0.4'
+    uiDesignDependencies = [
+            materialDesign  : "com.google.android.material:material:${materialDesignVer}",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:${constraingLayoutVer}",
+            cardView        : "androidx.cardview:cardview:${cardviewVer}",
+            recyclerView    : "androidx.recyclerview:recyclerview:${recyclerViewVer}"
+    ]
+
+
+    //Viewmodel and Lifecycle
+    lifecycleViewModelVer = '2.3.1'
+    lifecycleExtensionsVer = '2.2.0'
+    lifecycleDependencies = [
+            viewmodel   : "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleViewModelVer}",
+            lifecycleExt: "androidx.lifecycle:lifecycle-extensions:${lifecycleExtensionsVer}"
+    ]
+
+    //Coroutines
+    coroutinesVer = '1.3.3'
+    coroutineDependencies = [
+            coroutines    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVer}",
+            coroutinesCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:{$coroutinesVer}"
+    ]
+
+    //Network
+    retrofitVer = '2.6.0'
+    okhttp3Ver = '3.12.0'
+    okhttp3LoggingVer = '4.2.2'
+    networkDependencies = [
+            retrofit2         : "com.squareup.retrofit2:retrofit:${retrofitVer}",
+            retrofit2Converter: "com.squareup.retrofit2:converter-gson:${retrofitVer}",
+            okhttp3           : "com.squareup.okhttp3:okhttp:${okhttp3Ver}",
+            okhttp3Logging    : "com.squareup.okhttp3:logging-interceptor:$okhttp3LoggingVer"
+    ]
+
+    //Room Database
+    roomVer = '2.3.0'
+    roomDependencies = [
+            room                : "androidx.room:room-runtime:${roomVer}",
+            roomKapt            : "androidx.room:room-compiler:${roomVer}",
+            roomCoroutineSupport: "androidx.room:room-ktx:${roomVer}"
+    ]
+
+    //Kodein
+    kodeinVer = '6.2.1'
+    kodeinDependencies = [
+            kodeinGeneric  : "org.kodein.di:kodein-di-generic-jvm:${kodeinVer}",
+            kodeinFramework: "org.kodein.di:kodein-di-framework-android-x:${kodeinVer}"
+    ]
+
+    //Tests
+    androidxJunitVer = '1.1.2'
+    androidxEspressoVer = '3.3.0'
+    testingDependencies = [
+            junit           : "junit:junit:4.+",
+            androidxJunit   : "androidx.test.ext:junit:${androidxJunitVer}",
+            androidxEspresso: "androidx.test.espresso:espresso-core:${androidxEspressoVer}"
+    ]
+}
