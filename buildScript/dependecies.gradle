@@ -64,7 +64,8 @@ ext {
     roomDependencies = [
             room                : "androidx.room:room-runtime:${roomVer}",
             roomKapt            : "androidx.room:room-compiler:${roomVer}",
-            roomCoroutineSupport: "androidx.room:room-ktx:${roomVer}"
+            roomCoroutineSupport: "androidx.room:room-ktx:${roomVer}",
+            roomTest            : "androidx.room:room-testing:${roomVer}"
     ]
 
     //Kodein

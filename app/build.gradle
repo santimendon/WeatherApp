@@ -29,16 +29,20 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    configurations {
-        cleanedAnnotations
-        implementation.exclude group: 'org.jetbrains', module: 'annotations'
+    buildFeatures {
+        //viewBinding true
+        dataBinding true
     }
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //AndroidX Core & Kotlin & Support Libraries
@@ -68,8 +72,9 @@ dependencies {
 
     //Room Database
     implementation(roomDependencies.room)
-    implementation(roomDependencies.roomKapt)
+    kapt(roomDependencies.roomKapt)
     implementation(roomDependencies.roomCoroutineSupport)
+    androidTestImplementation(roomDependencies.roomTest)
 
     //Kodein Dependency Injection
     implementation(kodeinDependencies.kodeinGeneric)

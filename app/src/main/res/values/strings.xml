@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="comma_seperator">, %s</string>
+
 </resources>
