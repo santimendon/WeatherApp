@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/textArea"
-            style="@style/ListItemValue"
+            style="@style/ListItemValueBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/margin_large"
