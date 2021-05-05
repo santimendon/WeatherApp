@@ -1,13 +1,17 @@
-package com.capgemini.dcx.assisgnment.data.remote
+package com.capgemini.dcx.weatherapp.data.remote
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import com.capgemini.dcx.assisgnment.util.NetworkConnectionException
+import com.capgemini.dcx.weatherapp.util.NetworkConnectionException
 import okhttp3.Interceptor
 import okhttp3.Response
 
+/**
+ * Created by Sanket Mendon on 2020-05-01,
+ * sanket.mendon@gmail.com
+ */
 class NetworkInterceptor(
     context: Context
 ) : Interceptor {

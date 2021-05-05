@@ -1,16 +1,22 @@
-package com.capgemini.dcx.assisgnment.view.search
+package com.capgemini.dcx.weatherapp.view.search
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.capgemini.dcx.assisgnment.data.remote.models.searchmodel.SearchItem
+import com.capgemini.dcx.weatherapp.data.remote.models.searchmodel.SearchItem
 import com.capgemini.dcx.weatherapp.databinding.SearchItemBinding
+import com.capgemini.dcx.weatherapp.util.ClickListener
 
-class SearchCityAdapter(
+/**
+ * Created by Sanket Mendon on 2020-05-03,
+ * sanket.mendon@gmail.com
+ */
+
+class SearchAdapter(
     private var dataset: List<SearchItem>,
     private val mListener: ClickListener<SearchItem>?
-) : RecyclerView.Adapter<SearchCityAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     private var mOnClickListener: View.OnClickListener
 
@@ -32,7 +38,6 @@ class SearchCityAdapter(
     }
 
     fun submitList(updatedDataset: List<SearchItem>) {
-        //this.dataset.clear()
         this.dataset = updatedDataset
     }
 

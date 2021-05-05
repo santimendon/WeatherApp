@@ -10,31 +10,32 @@
             type="com.capgemini.dcx.weatherapp.util.ClickListener" />
 
         <variable
-            name="searchItem"
-            type="com.capgemini.dcx.weatherapp.data.remote.models.searchmodel.SearchItem" />
+            name="historyitem"
+            type="com.capgemini.dcx.weatherapp.data.local.entities.SearchHistoryItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() ->  productItemClick.onItemClick(searchItem)}">
+        android:onClick="@{() ->  productItemClick.onItemClick(historyitem)}">
 
         <TextView
             android:id="@+id/textArea"
-            style="@style/SearchTextStyle"
+            style="@style/ListItemValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{searchItem.areaName.get(0).value.concat(@string/space).concat(searchItem.country.get(0).value)}"
+            android:paddingLeft="@dimen/margin_large"
+            android:text="@{historyitem.areaName.concat(@string/space).concat(historyitem.country)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Test String" />
+            tools:text="Area" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/margin_large"
-            android:background="@color/black"
+            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

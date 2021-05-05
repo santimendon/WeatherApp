@@ -7,46 +7,48 @@
 
         <variable
             name="adapter"
-            type="com.capgemini.dcx.assisgnment.view.search.SearchCityAdapter" />
+            type="com.capgemini.dcx.weatherapp.view.search.SearchAdapter" />
 
         <variable
             name="viewModel"
-            type="com.capgemini.dcx.assisgnment.view.search.SearchViewModel" />
+            type="com.capgemini.dcx.weatherapp.view.history.SharedViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/margin_extra_small"
-        tools:context=".SearchActivity">
+        tools:context=".view.search.SearchFragment">
 
-        <SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/search_city_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryHint="@string/hint_search" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_search_results"
+            style="@style/SearchSectionItalic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_large"
+            android:text="@string/label_search_results"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_city_input" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_search_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:paddingLeft="@dimen/margin_large"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_city_input"
-            app:setAdapter="@{adapter}"
-            tools:listitem="@layout/search_item" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv_search_history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_city_input"
+            app:layout_constraintTop_toBottomOf="@+id/label_search_results"
             app:setAdapter="@{adapter}"
             tools:listitem="@layout/search_item" />
 

@@ -1,4 +1,4 @@
-package com.capgemini.dcx.assisgnment.data.remote.models.searchmodel
+package com.capgemini.dcx.weatherapp.data.remote.models.searchmodel
 
 
 data class SearchResponse(

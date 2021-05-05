@@ -1,4 +1,4 @@
-package com.capgemini.dcx.assisgnment.util
+package com.capgemini.dcx.weatherapp.util
 
 import java.io.IOException
 

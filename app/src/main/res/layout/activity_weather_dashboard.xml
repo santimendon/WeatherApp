@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dailyWeatherAdapter"
+            type="com.capgemini.dcx.weatherapp.view.weatherdashboard.DailyWeatherItemAdapter" />
+
+        <variable
+            name="monthlyWeatherAdapter"
+            type="com.capgemini.dcx.weatherapp.view.weatherdashboard.MonthlyWeatherItemAdapter" />
+
+        <variable
+            name="weatherViewModel"
+            type="com.capgemini.dcx.weatherapp.view.weatherdashboard.WeatherDashboardViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:paddingTop="@dimen/margin_large"
+        tools:context=".view.weatherdashboard.WeatherDashboardActivity">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_place"
+            style="@style/LabelPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{String.valueOf(weatherViewModel.currentWeatherData.data.request.get(0).query)}"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="New York, United States of America" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_location_marker"
+            app:layout_constraintLeft_toRightOf="@+id/text_place"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/primary_weather_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_large"
+            app:cardBackgroundColor="@color/black_overlay"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_place">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/center_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.50" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/left_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.15" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/right_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.85" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_time"
+                    style="@style/LabelSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:bindServerDate="@{(weatherViewModel.currentWeatherData.data.time_zone.get(0).localtime)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="10:00 03-05-2021" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_temp"
+                    style="@style/LabelExtraLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{@string/degree(weatherViewModel.currentWeatherData.data.current_condition.get(0).temp_C)}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_time"
+                    tools:text="34 C" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_weather_type"
+                    style="@style/LabelSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{(weatherViewModel.currentWeatherData.data.current_condition.get(0).weatherDesc.get(0).value)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_temp"
+                    tools:text="Clear" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_logo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_weather_type"
+                    app:weatherTypeLogo="@{weatherViewModel.currentWeatherData.data.current_condition.get(0).weatherIconUrl.get(0).value}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_wind_speed"
+                    style="@style/LabelSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{@string/label_wind (weatherViewModel.currentWeatherData.data.current_condition.get(0).windspeedKmph) + ' '+(weatherViewModel.currentWeatherData.data.current_condition.get(0).winddir16Point)}"
+                    app:layout_constraintStart_toStartOf="@+id/left_guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/image_logo"
+                    tools:text="9 km/hr E" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_humidity"
+                    style="@style/LabelSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{@string/label_humidity (weatherViewModel.currentWeatherData.data.current_condition.get(0).humidity)}"
+                    app:layout_constraintEnd_toEndOf="@id/right_guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/image_logo"
+                    tools:text="Humidity: 63" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_daily_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/label_daily_data"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerview_daily_weather"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/primary_weather_card" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_daily_weather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_large"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin_large"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/label_monthly_data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_daily_data"
+            app:populateData="@{weatherViewModel.currentWeatherData.data.weather}"
+            app:setAdapter="@{dailyWeatherAdapter}"
+            tools:listitem="@layout/daily_weather_item" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_monthly_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/label_monthly_data"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerview_monthly_weather"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview_daily_weather" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_monthly_weather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_large"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin_large"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_monthly_data"
+            app:populateMonthlyData="@{weatherViewModel.currentWeatherData.data.ClimateAverages.get(0).month}"
+            app:setAdapter="@{monthlyWeatherAdapter}"
+            tools:listitem="@layout/monthly_weather_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

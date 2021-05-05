@@ -5,6 +5,10 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
@@ -15,6 +19,8 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+
+        buildConfigField("String", "API_KEY", apikeyProperties['API_KEY'])
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -79,6 +85,10 @@ dependencies {
     //Kodein Dependency Injection
     implementation(kodeinDependencies.kodeinGeneric)
     implementation(kodeinDependencies.kodeinFramework)
+
+    //Glide
+    implementation(glideDependencies.glideLib)
+    annotationProcessor(glideDependencies.glideCompiler)
 
     //Tests
     implementation(testingDependencies.junit)

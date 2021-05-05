@@ -1,12 +1,11 @@
-package com.capgemini.dcx.assisgnment.data.local.entities
+package com.capgemini.dcx.weatherapp.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.capgemini.dcx.assisgnment.data.remote.models.searchmodel.SearchItem
+import com.capgemini.dcx.weatherapp.data.remote.models.searchmodel.SearchItem
 
 @Entity(tableName = "table_search_history")
 data class SearchHistoryItem(
-    @PrimaryKey
     val areaName: String,
     val country: String,
     val latitude: String,
@@ -14,7 +13,10 @@ data class SearchHistoryItem(
     val population: String,
     val region: String,
     val weatherUrl: String
-)
+) {
+    @PrimaryKey
+    var updateTime: Long? = System.currentTimeMillis()
+}
 
 fun transformToSearchHistory(obj: SearchItem): SearchHistoryItem {
     val areaName = obj.areaName.get(0).value
@@ -35,34 +37,3 @@ fun transformToSearchHistory(obj: SearchItem): SearchHistoryItem {
         weatherUrl
     )
 }
-
-/*
-
-@Entity(tableName = "table_search_history")
-data class SearchItem(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val areaName: List<AreaName>,
-    val country: List<Country>,
-    val latitude: String,
-    val longitude: String,
-    val population: String,
-    val region: List<Region>,
-    val weatherUrl: List<WeatherUrl>
-)
-
-data class AreaName(
-    val value: String
-)
-
-data class Country(
-    val value: String
-)
-
-data class Region(
-    val value: String
-)
-
-data class WeatherUrl(
-    val value: String
-)*/

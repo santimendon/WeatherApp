@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dailyWeatherItem"
+            type="com.capgemini.dcx.weatherapp.data.remote.models.currentweathermodel.Weather" />
+
+        <variable
+            name="weatherViewModel"
+            type="com.capgemini.dcx.weatherapp.view.weatherdashboard.WeatherDashboardViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/list_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/margin_extra_large"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textDate"
+            style="@style/LabelTitleListItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Date" />
+
+        <TextView
+            android:id="@+id/labelMaxTemp"
+            style="@style/ListItemLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_max_temp"
+            app:layout_constraintRight_toLeftOf="@id/list_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/textDate"
+            tools:text="Label Temp" />
+
+        <TextView
+            android:id="@+id/textMaxTemp"
+            style="@style/ListItemValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/degree(dailyWeatherItem.maxtempC)}"
+            app:layout_constraintLeft_toRightOf="@+id/list_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/textDate"
+            tools:text="Max Temp" />
+
+        <TextView
+            android:id="@+id/labelMinTemp"
+            style="@style/ListItemLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_min_temp"
+            app:layout_constraintRight_toLeftOf="@id/list_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/labelMaxTemp"
+            tools:text="Label Temp" />
+
+        <TextView
+            android:id="@+id/textMinTemp"
+            style="@style/ListItemValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/degree(dailyWeatherItem.mintempC)}"
+            app:layout_constraintLeft_toRightOf="@+id/list_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/labelMaxTemp"
+            tools:text="Min Temp" />
+
+        <TextView
+            android:id="@+id/labelAvgTemp"
+            style="@style/ListItemLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_avg_temp"
+            app:layout_constraintRight_toLeftOf="@id/list_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/labelMinTemp"
+            tools:text="Avg Temp" />
+
+        <TextView
+            android:id="@+id/textAvgTemp"
+            style="@style/ListItemValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/degree(dailyWeatherItem.avgtempC)}"
+            app:layout_constraintLeft_toRightOf="@+id/list_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/labelMinTemp"
+            tools:text="Avg Temp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

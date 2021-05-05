@@ -1,7 +1,8 @@
-package com.capgemini.dcx.assisgnment.data.remote
+package com.capgemini.dcx.weatherapp.data.remote
 
-import com.capgemini.dcx.assisgnment.data.remote.models.searchmodel.SearchResponse
-import com.capgemini.dcx.assisgnment.util.*
+import com.capgemini.dcx.weatherapp.data.remote.models.currentweathermodel.CurrentWeather
+import com.capgemini.dcx.weatherapp.data.remote.models.searchmodel.SearchResponse
+import com.capgemini.dcx.weatherapp.util.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
@@ -11,14 +12,27 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
+/**
+ * Created by Sanket Mendon on 2020-05-01,
+ * sanket.mendon@gmail.com
+ */
 interface WeatherService {
-    @GET("/$SUBSCRIPTION_TYPE/$API_VERSION/search.ashx")
+    @GET("/$SUBSCRIPTION_TYPE/$API_VERSION/$ENDPOINT_SEARCH")
     suspend fun searchCity(
-        @Query("query") city: String,
-        @Query("num_of_results") numOfResults: Int = NUM_OF_RESULTS,
-        @Query("format") format: String = FORMAT,
-        @Query("key") key: String = API_KEY
+        @Query(KEY_QUERY) city: String,
+        @Query(KEY_NUM_RESULTS) numOfResults: Int = NUM_OF_RESULTS,
+        @Query(KEY_FORMAT) format: String = API_RESPONSE_FORMAT,
+        @Query(KEY_API_KEY) key: String = WORLD_WEATHER_API_KEY
     ): Response<SearchResponse>
+
+    @GET("/$SUBSCRIPTION_TYPE/$API_VERSION/$ENDPOINT_CURRENT_WEATHER")
+    suspend fun getCurrentWeather(
+        @Query(KEY_QUERY) place: String,
+        @Query(KEY_NUM_DAYS) numOfResults: Int = NUM_OF_DAYS,
+        @Query(KEY_FORMAT) format: String = API_RESPONSE_FORMAT,
+        @Query(KEY_SHOW_LOCAL_TIME) showLocalTime: String = FLAG_SHOW_LOCAL_TIME_VAL,
+        @Query(KEY_API_KEY) key: String = WORLD_WEATHER_API_KEY
+    ): Response<CurrentWeather>
 
 
     companion object {

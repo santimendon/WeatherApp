@@ -2,4 +2,22 @@
     <string name="app_name">WeatherApp</string>
     <string name="comma_seperator">, %s</string>
 
+    <string name="label_wind">Wind: %s km/hr</string>
+    <string name="label_humidity">Humidity: %s</string>
+    <string name="degree">%s\u00B0C</string>
+
+    <string name="label_max_temp">Max:  </string>
+    <string name="label_min_temp">Min:  </string>
+    <string name="label_avg_temp">Avg:  </string>
+
+    <string name="label_daily_data">Daily averages</string>
+    <string name="label_monthly_data">Monthly averages</string>
+
+    <string name="hint_search">Search place</string>
+    <string name="label_search_results">Search results</string>
+    <string name="label_edit_location">+ Edit location</string>
+    <string name="label_recent_search">Recent Search</string>
+    <string name="space">, \u0020</string>
+
+
 </resources>
