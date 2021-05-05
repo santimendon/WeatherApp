@@ -1,6 +1,7 @@
 package com.capgemini.dcx.weatherapp.view.search
 
 import android.os.Bundle
+import android.os.RemoteException
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +13,13 @@ import com.capgemini.dcx.weatherapp.data.local.entities.transformToSearchHistory
 import com.capgemini.dcx.weatherapp.data.remote.models.searchmodel.SearchItem
 import com.capgemini.dcx.weatherapp.databinding.SearchFragmentBinding
 import com.capgemini.dcx.weatherapp.util.ClickListener
+import com.capgemini.dcx.weatherapp.util.NetworkConnectionException
 import com.capgemini.dcx.weatherapp.view.history.SharedViewModel
 import com.capgemini.dcx.weatherapp.view.history.SharedViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -58,10 +61,37 @@ class SearchFragment : Fragment(), KodeinAware, ClickListener<SearchItem>,
         viewModel = ViewModelProviders.of(this, factory).get(SharedViewModel::class.java)
 
         viewModel.searchData.observe(viewLifecycleOwner, Observer {
-            adapterDataset = it.search_api.result
-            searchAdapter.submitList(adapterDataset)
-            searchAdapter.notifyDataSetChanged()
+            it.search_api?.let {
+                displayResultsView()
+                renderList(it.result)
+            }
+            it.data?.let {
+                displayErrorView(it.error.get(0).msg)
+            }
         })
+    }
+
+    private fun renderList(results: List<SearchItem>) {
+        adapterDataset = results
+        searchAdapter.submitList(adapterDataset)
+        searchAdapter.notifyDataSetChanged()
+    }
+
+    private fun displayResultsView() {
+        binding.labelPageError.visibility = View.GONE
+        binding.rcvSearchList.visibility = View.VISIBLE
+    }
+
+    private fun displayErrorView(error: String = "Something went wrong") {
+        binding.labelPageError.visibility = View.VISIBLE
+        binding.labelPageError.text = error
+        binding.rcvSearchList.visibility = View.GONE
+    }
+
+    suspend fun setError(error: String) {
+        withContext(Dispatchers.Main) {
+            displayErrorView(error)
+        }
     }
 
     override fun onItemClick(item: SearchItem) {
@@ -74,7 +104,19 @@ class SearchFragment : Fragment(), KodeinAware, ClickListener<SearchItem>,
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         CoroutineScope(Dispatchers.IO).launch {
-            viewModel.searchCity(query.toString())
+            try {
+                viewModel.searchCity(query.toString())
+
+            } catch (e: RemoteException) {
+                e.printStackTrace()
+                println("RemoteException")
+                setError(e.message.toString())
+
+            } catch (e: NetworkConnectionException) {
+                e.printStackTrace()
+                println("RemoteException")
+                setError(e.message.toString())
+            }
         }
         return true
     }

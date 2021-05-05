@@ -2,7 +2,24 @@ package com.capgemini.dcx.weatherapp.data.remote.models.searchmodel
 
 
 data class SearchResponse(
-    val search_api: ListResult
+    val search_api: ListResult,
+    val data: Data
+)
+
+/*
+* For Search API no results found error
+*
+*/
+data class Error(
+    val msg: String
+)
+
+/*
+* For Search API no results found error
+*
+*/
+data class Data(
+    val error: List<Error>
 )
 
 data class ListResult(

@@ -30,6 +30,19 @@
             app:queryHint="@string/hint_search" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_page_error"
+            style="@style/PageErrorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_large"
+            android:text="@string/label_page_error"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/label_search_results"
             style="@style/SearchSectionItalic"
             android:layout_width="wrap_content"

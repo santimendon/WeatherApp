@@ -19,5 +19,7 @@
     <string name="label_recent_search">Recent Search</string>
     <string name="space">, \u0020</string>
 
+    <string name="label_page_error">Search results appear here</string>
+
 
 </resources>

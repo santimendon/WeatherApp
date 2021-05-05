@@ -1,15 +1,19 @@
 package com.capgemini.dcx.weatherapp.view.weatherdashboard
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.os.RemoteException
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.capgemini.dcx.weatherapp.databinding.ActivityWeatherDashboardBinding
+import com.capgemini.dcx.weatherapp.util.NetworkConnectionException
 import com.capgemini.dcx.weatherapp.view.history.HistoryActivity
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
@@ -53,8 +57,30 @@ class WeatherDashboardActivity : AppCompatActivity(), KodeinAware {
         val currentLocation = viewModel.getUserLocation()
 
         CoroutineScope(Dispatchers.IO).launch {
-            currentLocation?.let { viewModel.getCurrentWeather(it) }
+            try {
+                currentLocation?.let { viewModel.getCurrentWeather(it) }
+
+            } catch (e: RemoteException) {
+                e.printStackTrace()
+                setError(e.message.toString())
+
+            } catch (e: NetworkConnectionException) {
+                e.printStackTrace()
+                setError(e.message.toString())
+            }
+
         }
 
+    }
+
+    suspend fun setError(error: String) {
+        withContext(Dispatchers.Main) {
+            val snackbar = Snackbar.make(
+                findViewById(R.id.content),
+                error,
+                Snackbar.LENGTH_LONG
+            )
+            snackbar.show()
+        }
     }
 }

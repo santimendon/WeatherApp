@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@{String.valueOf(weatherViewModel.currentWeatherData.data.request.get(0).query)}"
+            android:text='@{weatherViewModel.currentWeatherData.data.request.get(0).query ?? ""}'
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -220,6 +220,5 @@
             tools:listitem="@layout/monthly_weather_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </layout>
