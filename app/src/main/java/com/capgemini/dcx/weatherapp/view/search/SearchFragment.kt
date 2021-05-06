@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.capgemini.dcx.weatherapp.R
 import com.capgemini.dcx.weatherapp.data.local.entities.transformToSearchHistory
 import com.capgemini.dcx.weatherapp.data.remote.models.searchmodel.SearchItem
 import com.capgemini.dcx.weatherapp.databinding.SearchFragmentBinding
@@ -103,9 +104,23 @@ class SearchFragment : Fragment(), KodeinAware, ClickListener<SearchItem>,
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
+        search(query.toString())
+        return true
+    }
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        if (query?.length!! >= 3) search(query.toString()) else displayErrorView(
+            resources.getString(
+                R.string.label_page_error
+            )
+        )
+        return true
+    }
+
+    private fun search(searchQuery: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                viewModel.searchCity(query.toString())
+                viewModel.searchCity(searchQuery)
 
             } catch (e: RemoteException) {
                 e.printStackTrace()
@@ -118,11 +133,6 @@ class SearchFragment : Fragment(), KodeinAware, ClickListener<SearchItem>,
                 setError(e.message.toString())
             }
         }
-        return true
-    }
-
-    override fun onQueryTextChange(query: String?): Boolean {
-        return true
     }
 
 }

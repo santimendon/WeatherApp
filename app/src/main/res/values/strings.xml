@@ -15,8 +15,8 @@
 
     <string name="hint_search">Search place</string>
     <string name="label_search_results">Search results</string>
-    <string name="label_edit_location">+ Edit location</string>
-    <string name="label_recent_search">Recent Search</string>
+    <string name="label_edit_location">+ Select new location</string>
+    <string name="label_recent_search">Choose from your recent search</string>
     <string name="space">, \u0020</string>
 
     <string name="label_page_error">Search results appear here</string>
