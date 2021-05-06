@@ -80,7 +80,7 @@ dependencies {
     implementation(roomDependencies.room)
     kapt(roomDependencies.roomKapt)
     implementation(roomDependencies.roomCoroutineSupport)
-    androidTestImplementation(roomDependencies.roomTest)
+    testImplementation(roomDependencies.roomTest)
 
     //Kodein Dependency Injection
     implementation(kodeinDependencies.kodeinGeneric)
@@ -91,7 +91,11 @@ dependencies {
     annotationProcessor(glideDependencies.glideCompiler)
 
     //Tests
-    implementation(testingDependencies.junit)
-    implementation(testingDependencies.androidxJunit)
-    implementation(testingDependencies.androidxEspresso)
+    testImplementation(testingDependencies.junit)
+    androidTestImplementation(testingDependencies.androidxJunit)
+    androidTestImplementation(testingDependencies.androidxEspresso)
+    testImplementation(testingDependencies.mockitoCore)
+    testImplementation(testingDependencies.mockitoInline)
+    testImplementation(testingDependencies.androidArchCore)
+    testImplementation(coroutineDependencies.coroutinesTest)
 }
