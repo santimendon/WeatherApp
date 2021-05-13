@@ -59,7 +59,8 @@ class SearchFragment : Fragment(), KodeinAware, ClickListener<SearchItem>,
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, factory).get(SharedViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(requireActivity(), factory).get(SharedViewModel::class.java)
 
         viewModel.searchData.observe(viewLifecycleOwner, Observer {
             it.search_api?.let {

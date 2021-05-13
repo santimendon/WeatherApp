@@ -53,7 +53,8 @@ class HistoryFragment : Fragment(), KodeinAware, ClickListener<SearchHistoryItem
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, factory).get(SharedViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(requireActivity(), factory).get(SharedViewModel::class.java)
 
         binding.txtEditLocation.setOnClickListener {
             var transaction = fragmentManager?.beginTransaction()
