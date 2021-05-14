@@ -7,11 +7,11 @@
 
         <variable
             name="dailyWeatherItem"
-            type="com.capgemini.dcx.weatherapp.data.remote.models.currentweathermodel.Weather" />
+            type="com.smendon.android.weatherapp.data.remote.models.currentweathermodel.Weather" />
 
         <variable
             name="weatherViewModel"
-            type="com.capgemini.dcx.weatherapp.view.weatherdashboard.WeatherDashboardViewModel" />
+            type="com.smendon.android.weatherapp.view.weatherdashboard.WeatherDashboardViewModel" />
 
     </data>
 

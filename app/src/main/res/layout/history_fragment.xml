@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.capgemini.dcx.weatherapp.view.history.SharedViewModel" />
+            type="com.smendon.android.weatherapp.view.history.SharedViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

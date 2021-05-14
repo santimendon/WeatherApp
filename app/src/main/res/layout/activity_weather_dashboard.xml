@@ -7,15 +7,15 @@
 
         <variable
             name="dailyWeatherAdapter"
-            type="com.capgemini.dcx.weatherapp.view.weatherdashboard.DailyWeatherItemAdapter" />
+            type="com.smendon.android.weatherapp.view.weatherdashboard.DailyWeatherItemAdapter" />
 
         <variable
             name="monthlyWeatherAdapter"
-            type="com.capgemini.dcx.weatherapp.view.weatherdashboard.MonthlyWeatherItemAdapter" />
+            type="com.smendon.android.weatherapp.view.weatherdashboard.MonthlyWeatherItemAdapter" />
 
         <variable
             name="weatherViewModel"
-            type="com.capgemini.dcx.weatherapp.view.weatherdashboard.WeatherDashboardViewModel" />
+            type="com.smendon.android.weatherapp.view.weatherdashboard.WeatherDashboardViewModel" />
     </data>
 
 

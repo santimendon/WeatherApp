@@ -7,11 +7,11 @@
 
         <variable
             name="productItemClick"
-            type="com.capgemini.dcx.weatherapp.util.ClickListener" />
+            type="com.smendon.android.weatherapp.util.ClickListener" />
 
         <variable
             name="searchItem"
-            type="com.capgemini.dcx.weatherapp.data.remote.models.searchmodel.SearchItem" />
+            type="com.smendon.android.weatherapp.data.remote.models.searchmodel.SearchItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

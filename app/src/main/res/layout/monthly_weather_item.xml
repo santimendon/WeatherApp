@@ -7,7 +7,7 @@
 
         <variable
             name="monthlyWeatherItem"
-            type="com.capgemini.dcx.weatherapp.data.remote.models.currentweathermodel.Month" />
+            type="com.smendon.android.weatherapp.data.remote.models.currentweathermodel.Month" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

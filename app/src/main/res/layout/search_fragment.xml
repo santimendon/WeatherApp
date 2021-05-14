@@ -7,11 +7,11 @@
 
         <variable
             name="adapter"
-            type="com.capgemini.dcx.weatherapp.view.search.SearchAdapter" />
+            type="com.smendon.android.weatherapp.view.search.SearchAdapter" />
 
         <variable
             name="viewModel"
-            type="com.capgemini.dcx.weatherapp.view.history.SharedViewModel" />
+            type="com.smendon.android.weatherapp.view.history.SharedViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
