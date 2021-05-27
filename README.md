@@ -2,20 +2,24 @@
 ## About
 WeatherApp is made for you to comfortably check realtime weather status of your desired place. The application is built around the [World Weather](https://www.worldweatheronline.com/) API's
 
+------
+
 ## Screenshots
 
-<img src="https://github.com/santimendon/WeatherApp/blob/master/screenshots/weatherapp_dashboard.jpg" width="250" height="500" hspace=10 vspace=10>
+<img src="https://github.com/santimendon/WeatherApp/blob/master/screenshots/dashboard.png" width="250" height="500" hspace=10 vspace=10>
 
-<img src="https://github.com/santimendon/WeatherApp/blob/master/screenshots/weatherapp_recent_searches.jpg" width="250" height="500" hspace=10 vspace=10>
+<img src="https://github.com/santimendon/WeatherApp/blob/master/screenshots/recent_search.png" width="250" height="500" hspace=10 vspace=10>
 
-<img src="https://github.com/santimendon/WeatherApp/blob/master/screenshots/weatherapp_search.jpg" width="250" height="500" hspace=10 vspace=10>
+<img src="https://github.com/santimendon/WeatherApp/blob/master/screenshots/search.png" width="250" height="500" hspace=10 vspace=10>
 
+------
 
 ## Features
 * The app lets you check the real-time weather of your selected place.
 * Add a new place from search and set it as your primary location
 * Readily available list of your previously searched places.
 
+------
 
 ## Architecture & Components
 * [MVVM](https://developer.android.com/jetpack/guide?gclid=CjwKCAjwv_iEBhASEiwARoemvJYflm0CSMY1cN5BjXlWgWirIJ38AlmxyIDzt3KtzzB_ZmB-kegx-RoCvYQQAvD_BwE&gclsrc=aw.ds)
@@ -28,11 +32,12 @@ WeatherApp is made for you to comfortably check realtime weather status of your 
 * [Databinding](https://developer.android.com/topic/libraries/data-binding)
 * [Kodein](https://kodein.org/Kodein-DI/index.html?latest/android)
 
-
+------
 
 ## Permissions
 * Full Network Access.
 
+------
 
 ## Installation
 1. cd ~/ProjectLocation/WeatherApp
